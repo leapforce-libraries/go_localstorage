@@ -1,0 +1,10 @@
+github.com/gofrs/uuid v3.2.0+incompatible h1:y12jRkkFxsd7GpqdSZ+/KCs/fJbqpEXSGd4+jfEaewE=
+github.com/gofrs/uuid v3.2.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
+github.com/leapforce-libraries/go_fileio v0.0.0-20201103175351-d3f920787f0b h1:gv4LaKyVsQN6vkylXG9QYZ6IZCI1Q/CZ6Ea0YqjGfEU=
+github.com/leapforce-libraries/go_fileio v0.0.0-20201103175351-d3f920787f0b/go.mod h1:LKWp/v5tLKmJrrGm49Br0CTSXhL+mB44c5/VQpBOLTc=
+github.com/leapforce-libraries/go_types v0.0.0-20201101222114-6d3ec3839c8c h1:4GY1e071Gyk2sBn8mMVi2rI+DUnqIUP3/IAHvND39w8=
+github.com/leapforce-libraries/go_types v0.0.0-20201101222114-6d3ec3839c8c/go.mod h1:0k0QPi4o2OO3yau759B2U5XIEPbuYTf56QxyF8WdV4o=
+github.com/szyhf/go-convert v1.0.0 h1:L49o5JLMPzXYRggFqwNEzDw1gAQktpyWfKZqcPzEmX8=
+github.com/szyhf/go-convert v1.0.0/go.mod h1:BgotSGjAF33Z4fcU/fe8OPYZoo6mKiBiKvJ+FVih5UM=
+github.com/szyhf/go-excel v1.5.1 h1:LfTRZc4PS/mmei7wNdeKkC52GJi7fSPpYFhMBgKEnGw=
+github.com/szyhf/go-excel v1.5.1/go.mod h1:W7GkeorrNkBXQRwwY66+fuH9sJqcU8ahcBMJF5A64pY=
