@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
+	errortools "github.com/leapforce-libraries/go_errortools"
 	fileio "github.com/leapforce-libraries/go_fileio"
 )
 
@@ -19,32 +20,32 @@ type LocalStorage struct {
 	data     *[]keyValue
 }
 
-func NewLocalStorage(fileName *string) (*LocalStorage, error) {
+func NewLocalStorage(fileName *string) (*LocalStorage, *errortools.Error) {
 	fileName_ := defaultFileName
 	if fileName != nil {
 		fileName_ = *fileName
 	}
 	ms := LocalStorage{fileName_, nil}
-	err := ms.read()
-	if err != nil {
-		return nil, err
+	e := ms.read()
+	if e != nil {
+		return nil, e
 	}
 
 	return &ms, nil
 }
 
-func (localStorage *LocalStorage) read() error {
+func (localStorage *LocalStorage) read() *errortools.Error {
 	data := []keyValue{}
 
 	if fileio.FileExists(localStorage.fileName) {
 		b, err := ioutil.ReadFile(localStorage.fileName)
 		if err != nil {
-			return err
+			return errortools.ErrorMessage(err)
 		}
 
 		err = json.Unmarshal(b, &data)
 		if err != nil {
-			return err
+			return errortools.ErrorMessage(err)
 		}
 
 	}
@@ -54,11 +55,11 @@ func (localStorage *LocalStorage) read() error {
 	return nil
 }
 
-func (localStorage *LocalStorage) Get(key string) (*string, error) {
+func (localStorage *LocalStorage) Get(key string) (*string, *errortools.Error) {
 	if localStorage.data == nil {
 		err := localStorage.read()
 		if err != nil {
-			return nil, err
+			return nil, errortools.ErrorMessage(err)
 		}
 	}
 
@@ -72,7 +73,7 @@ func (localStorage *LocalStorage) Get(key string) (*string, error) {
 	return nil, nil
 }
 
-func (localStorage *LocalStorage) Set(key string, value string) error {
+func (localStorage *LocalStorage) Set(key string, value string) *errortools.Error {
 	found := false
 
 	for i, m := range *localStorage.data {
@@ -90,12 +91,12 @@ func (localStorage *LocalStorage) Set(key string, value string) error {
 
 	b, err := json.Marshal(*localStorage.data)
 	if err != nil {
-		return err
+		return errortools.ErrorMessage(err)
 	}
 
 	err = ioutil.WriteFile(localStorage.fileName, b, 0644)
 	if err != nil {
-		return err
+		return errortools.ErrorMessage(err)
 	}
 
 	return nil
