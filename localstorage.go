@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 
 	errortools "github.com/leapforce-libraries/go_errortools"
-	fileio "github.com/leapforce-libraries/go_fileio"
+	utilities "github.com/leapforce-libraries/go_utilities"
 )
 
 const defaultFileName string = "__storage__"
@@ -37,7 +37,7 @@ func NewLocalStorage(fileName *string) (*LocalStorage, *errortools.Error) {
 func (localStorage *LocalStorage) read() *errortools.Error {
 	data := []keyValue{}
 
-	if fileio.FileExists(localStorage.fileName) {
+	if utilities.FileExists(localStorage.fileName) {
 		b, err := ioutil.ReadFile(localStorage.fileName)
 		if err != nil {
 			return errortools.ErrorMessage(err)
